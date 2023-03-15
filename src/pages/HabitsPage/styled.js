@@ -62,6 +62,11 @@ position: relative;
 `
 export const InputHabitName = styled.input`
 margin-bottom: 8px;
+color: #666666;
+font-weight: 400;
+font-size: 20px;
+line-height: 25px;
+padding-left: 10px;
 `
 
 export const DaysButtons = styled.button`

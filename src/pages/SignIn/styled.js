@@ -23,6 +23,13 @@ display: flex;
 flex-direction: column;
 margin-top:32px;
 gap: 6px;
+input{
+    color: #666666;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    padding-left: 10px;
+}
 button{
     width: 303px;
     height: 45px;

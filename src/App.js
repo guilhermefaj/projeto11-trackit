@@ -11,9 +11,9 @@ function App() {
   return (
     <>
       {/* <SignInPage /> */}
-      <SignUpPage />
+      {/* <SignUpPage /> */}
       {/* <NavBar /> */}
-      {/* <HabitsPage /> */}
+      <HabitsPage />
       {/* <TodayPage /> */}
       {/* <HistoricPage /> */}
       {/* <Footer /> */}

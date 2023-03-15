@@ -7,6 +7,7 @@ font-family: 'Lexend Deca';
 }
 button{
     border:none;
+
 }
 input{
     border: 1px solid #DBDBDB;
@@ -17,7 +18,6 @@ input{
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
-    padding-left: 10px;
     color: #DBDBDB;
     }
 }
