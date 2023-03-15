@@ -1,4 +1,5 @@
 import { HabitsContainer, MyHabits, NoHabits, CreateHabitContainer, InputHabitName, CancelButton, SaveButton, DaysButtons } from "./styled"
+import React from "react"
 
 export default function HabitsPage() {
     return (

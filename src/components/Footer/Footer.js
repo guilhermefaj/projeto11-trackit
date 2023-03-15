@@ -1,4 +1,5 @@
 import { FooterContainer } from "./styled";
+import React from "react"
 
 export default function Footer() {
     return (

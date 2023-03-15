@@ -1,4 +1,5 @@
 import { HistoricContainer } from "./styled"
+import React from "react"
 
 export default function HistoricPage() {
     return (

@@ -1,4 +1,5 @@
 import { TodayContainer, TodayTitle, HabitsContainer, HabitContainer, HabitTexts } from "./styled"
+import React from "react"
 
 export default function TodayPage() {
     return (

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SignUpContainer = styled.div`
 display: flex;
+width: 375px;
 flex-direction: column;
 align-items: center;
 margin-top: 68px;
@@ -18,7 +19,7 @@ p{
 }
 `
 
-export const SignUpElements = styled.div`
+export const SignUpElements = styled.form`
 display: flex;
 flex-direction: column;
 margin-top:32px;
