@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom"
 import React, { useState } from "react"
 import axios from "axios"
 import { ThreeDots } from "react-loader-spinner"
-import { isDisabled } from "@testing-library/user-event/dist/utils"
 
 export default function SignInPage({ setShowBars }) {
 
@@ -24,7 +23,7 @@ export default function SignInPage({ setShowBars }) {
         const promise = axios.post(URL, body)
         promise.then(res => {
             setShowBars(true)
-            navigate("/habitos")
+            navigate("/hoje")
         })
         promise.catch(err => {
             setShowBars(false)

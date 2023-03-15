@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      {showBars ? <NavBar /> : ""}
+      <NavBar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignInPage setShowBars={setShowBars} />} />
@@ -23,7 +23,7 @@ function App() {
           <Route path="/historico" element={<HistoricPage />} />
         </Routes>
       </BrowserRouter>
-      {showBars ? <Footer /> : ""}
+      <Footer />
     </>
   );
 }

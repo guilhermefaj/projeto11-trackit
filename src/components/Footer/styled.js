@@ -17,14 +17,11 @@ div{
     background-color: #52B6FF;
     width: 91px;
     height: 91px;
-    color: white;
     border-radius: 50%;
     position: absolute;
     bottom: 10px;
     left:142px;
-    font-family: 'Lexend Deca';
-    font-weight: 400;
-    font-size:18px;
+    padding: 5px;
 }
 p{
     font-family: 'Lexend Deca';
