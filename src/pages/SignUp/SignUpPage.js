@@ -4,11 +4,13 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import React from "react"
 import axios from "axios"
+import { ThreeDots } from "react-loader-spinner"
 
 
 export default function SignUpPage() {
 
     const [form, setForm] = useState({ name: "", password: "", email: "", image: "" })
+    const [load, setLoad] = useState(false)
     const navigate = useNavigate()
 
     function handleChange(event) {
@@ -17,52 +19,71 @@ export default function SignUpPage() {
 
     function signUp(e) {
         e.preventDefault()
-
+        setLoad(true)
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up"
         const promise = axios.post(URL, form)
-        promise.then(res => navigate("/"))
-        promise.catch(err => alert(err.response.data.message))
+        promise.then(res => {
+            setLoad(false)
+            navigate("/")
+        })
+        promise.catch(err => {
+            setLoad(false)
+            alert(err.response.data.message)
+        })
     }
 
     return (
         <SignUpContainer>
             <img src={logo} alt="Logo" />
-            <SignUpElements onSubmit={signUp}>
+            <SignUpElements onSubmit={signUp} load={load}>
                 <input
+                    disabled={load}
                     type="email"
                     placeholder="email"
                     name={"email"}
                     value={form.email}
                     onChange={handleChange}
-                    required
+
                 />
                 <input
+                    disabled={load}
                     type="password"
                     placeholder="senha"
                     name={"password"}
                     value={form.password}
                     onChange={handleChange}
-                    required
+
                 />
                 <input
+                    disabled={load}
                     type="text"
                     placeholder="nome"
                     name={"name"}
                     value={form.name}
                     onChange={handleChange}
-                    required
+
                 />
                 <input
+                    disabled={load}
                     type="url"
                     placeholder="foto"
                     name={"image"}
                     value={form.image}
                     onChange={handleChange}
-                    required
+
                 />
-                <button type="submit">Entrar</button>
+                <button type="submit">{load ? (<ThreeDots
+                    height="80"
+                    width="80"
+                    radius="9"
+                    color="white"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{}}
+                    wrapperClassName=""
+                    visible={true}
+                />) : "Cadastrar"}</button>
             </SignUpElements>
-            <Link to="/">
+            <Link to="/" disabled={load}>
                 <p>Já tem uma conta? Faça login!</p>
             </Link>
         </SignUpContainer>

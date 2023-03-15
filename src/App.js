@@ -11,7 +11,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   const [showBars, setShowBars] = useState(false)
 
-
   return (
     <>
       {showBars ? <NavBar /> : ""}
