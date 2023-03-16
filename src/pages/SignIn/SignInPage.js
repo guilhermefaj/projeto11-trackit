@@ -39,6 +39,7 @@ export default function SignInPage({ setShowBars }) {
             <img src={logo} alt="Logo" />
             <SignInElements onSubmit={signIn} load={load}>
                 <input
+                    data-test="email-input"
                     disabled={load}
                     type="email"
                     placeholder="email"
@@ -48,6 +49,7 @@ export default function SignInPage({ setShowBars }) {
                 >
                 </input>
                 <input
+                    data-test="password-input"
                     disabled={load}
                     type="password"
                     placeholder="senha"
@@ -57,7 +59,7 @@ export default function SignInPage({ setShowBars }) {
                 >
                 </input>
 
-                <button type="submit" disabled={load}>{load ? (<ThreeDots
+                <button data-test="login-btn" type="submit" disabled={load}>{load ? (<ThreeDots
                     height="80"
                     width="80"
                     radius="9"
@@ -68,7 +70,7 @@ export default function SignInPage({ setShowBars }) {
                     visible={true}
                 />) : "Entrar"}</button>
             </SignInElements>
-            <Link to="/cadastro" disabled={load}>
+            <Link data-test="signup-link" to="/cadastro" disabled={load}>
                 <p>Não tem uma conta? Cadastre-se!</p>
             </Link>
         </SignInContainer>

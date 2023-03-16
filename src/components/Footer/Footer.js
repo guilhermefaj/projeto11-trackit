@@ -9,11 +9,11 @@ export default function Footer() {
     const percentage = 66;
 
     return (
-        <FooterContainer>
-            <Link to="/habitos">
+        <FooterContainer data-test="menu">
+            <Link data-test="habitp-link" to="/habitos">
                 <p>Hábitos</p>
             </Link>
-            <Link to="/hoje">
+            <Link data-test="today-link" to="/hoje">
                 <div>
                     <CircularProgressbar
                         value={percentage}

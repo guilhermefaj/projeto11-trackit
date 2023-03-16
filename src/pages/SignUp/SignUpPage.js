@@ -37,6 +37,7 @@ export default function SignUpPage() {
             <img src={logo} alt="Logo" />
             <SignUpElements onSubmit={signUp} load={load}>
                 <input
+                    data-test="email-input"
                     disabled={load}
                     type="email"
                     placeholder="email"
@@ -46,6 +47,7 @@ export default function SignUpPage() {
 
                 />
                 <input
+                    data-test="password-input"
                     disabled={load}
                     type="password"
                     placeholder="senha"
@@ -55,6 +57,7 @@ export default function SignUpPage() {
 
                 />
                 <input
+                    data-test="user-name-input"
                     disabled={load}
                     type="text"
                     placeholder="nome"
@@ -64,6 +67,7 @@ export default function SignUpPage() {
 
                 />
                 <input
+                    data-test="user-image-input"
                     disabled={load}
                     type="url"
                     placeholder="foto"
@@ -72,7 +76,10 @@ export default function SignUpPage() {
                     onChange={handleChange}
 
                 />
-                <button type="submit">{load ? (<ThreeDots
+                <button
+                    data-test="signup-btn"
+                    type="submit"
+                >{load ? (<ThreeDots
                     height="80"
                     width="80"
                     radius="9"
@@ -83,7 +90,7 @@ export default function SignUpPage() {
                     visible={true}
                 />) : "Cadastrar"}</button>
             </SignUpElements>
-            <Link to="/" disabled={load}>
+            <Link data-test="login-link" to="/" disabled={load}>
                 <p>Já tem uma conta? Faça login!</p>
             </Link>
         </SignUpContainer>
