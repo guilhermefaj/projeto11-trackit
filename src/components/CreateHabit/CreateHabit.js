@@ -12,14 +12,14 @@ export default function CreateHabit() {
     const { habit, setHabit } = useContext(HabitContext)
     const { user } = useContext(UserContext)
 
-    function newHabit(e) {
+    function CreateNewHabit(e) {
         e.preventDefault()
 
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
 
         const token = user.token
         const config = {
-            headers: { Authorizarion: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${token}` }
         }
         const promise = axios.post(URL, habit, config)
         promise.then(res => {
@@ -34,7 +34,7 @@ export default function CreateHabit() {
     }, [input])
 
     return (
-        <CreateHabitContainer onSubmit={newHabit}>
+        <CreateHabitContainer onSubmit={CreateNewHabit}>
             <InputHabitName
                 placeholder="nome do hábito"
                 type="text"

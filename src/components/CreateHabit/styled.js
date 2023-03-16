@@ -25,7 +25,6 @@ padding-left: 10px;
 export const DaysButtons = styled.div`
 display: flex;
 justify-content: flex-start;
-margin-left: -6px;
 background-color: white;
 gap: 4px;
 `
