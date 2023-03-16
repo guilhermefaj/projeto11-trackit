@@ -1,18 +1,19 @@
 import { SignInContainer, SignInElements } from "./styled"
 import logo from "../../images/logo.png"
 import { Link, useNavigate } from "react-router-dom"
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import axios from "axios"
 import { ThreeDots } from "react-loader-spinner"
+import { UserContext } from "../../context/UserContext"
 
 export default function SignInPage({ setShowBars }) {
 
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const [load, setLoad] = useState(false)
+    const { setUser } = useContext(UserContext)
 
     const navigate = useNavigate()
-
 
     function signIn(e) {
         e.preventDefault()
@@ -22,6 +23,7 @@ export default function SignInPage({ setShowBars }) {
 
         const promise = axios.post(URL, body)
         promise.then(res => {
+            setUser(res.data)
             setShowBars(true)
             navigate("/hoje")
         })

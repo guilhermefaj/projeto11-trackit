@@ -1,11 +1,14 @@
 import { NavContainer } from "./styled";
-import React from "react"
+import React, { useContext } from "react"
+import { UserContext } from "../../context/UserContext";
 
 export default function NavBar() {
+    const { user } = useContext(UserContext)
+    console.log(user)
     return (
         <NavContainer>
             <h1>TrackIt</h1>
-            <img src="https://ih1.redbubble.net/image.1027386562.1581/flat,128x128,075,t.jpg" alt="Profile" />
+            <img src={user.image} alt="Profile" />
         </NavContainer>
     )
 }

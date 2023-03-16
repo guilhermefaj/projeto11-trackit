@@ -35,4 +35,7 @@ p:first-child{
 p:last-child{
     padding-right:36px;
 }
+a{
+    text-decoration: none;
+}
 `

@@ -7,25 +7,27 @@ import HistoricPage from "./pages/HistoricPage/HistoricPage";
 import SignInPage from "./pages/SignIn/SignInPage";
 import SignUpPage from "./pages/SignUp/SignUpPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserContextProvider } from "./context/UserContext";
+import { HabitContextProvider } from "./context/HabitContext";
 
-function App() {
+export default function App() {
   const [showBars, setShowBars] = useState(false)
 
   return (
-    <>
-      <NavBar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<SignInPage setShowBars={setShowBars} />} />
-          <Route path="/cadastro" element={<SignUpPage />} />
-          <Route path="/habitos" element={<HabitsPage />} />
-          <Route path="/hoje" element={<TodayPage />} />
-          <Route path="/historico" element={<HistoricPage />} />
-        </Routes>
-      </BrowserRouter>
-      <Footer />
-    </>
+    <UserContextProvider>
+      <HabitContextProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<SignInPage setShowBars={setShowBars} />} />
+            <Route path="/cadastro" element={<SignUpPage />} />
+            <Route path="/habitos" element={<HabitsPage />} />
+            <Route path="/hoje" element={<TodayPage />} />
+            <Route path="/historico" element={<HistoricPage />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </HabitContextProvider>
+    </UserContextProvider>
   );
 }
-
-export default App;
