@@ -13,6 +13,9 @@ const weekday = date.format('dddd')
 
 export default function TodayPage() {
     const [habits, setHabits] = useState([])
+    const [done, setDone] = useState([])
+    const [dayList, setDayList] = useState([])
+    const [percentage, setPercentage] = useState(0)
     const { user } = useContext(UserContext)
 
     useEffect(() => {
@@ -30,14 +33,28 @@ export default function TodayPage() {
         }
     }, [user])
 
+    useEffect(() => {
+        const numerator = dayList.length
+        const denominator = habits.length
+        setPercentage((numerator / denominator) * 100)
+    }, [habits, done])
+
     return (
         <TodayContainer>
             <TodayTitle>
                 <h1>{formattedDate}</h1>
-                <h2>Nenhum hábito concluído ainda</h2>
+                {done.length !== 0 ? `Você concluiu ${percentage}%` : <h2>Nenhum hábito concluído ainda</h2>}
+
             </TodayTitle>
             <HabitsContainer>
-                <WeekDays habits={habits} weekday={weekday} />
+                <WeekDays
+                    habits={habits}
+                    weekday={weekday}
+                    done={done}
+                    setDone={setDone}
+                    dayList={dayList}
+                    setDayList={setDayList}
+                />
             </HabitsContainer>
         </TodayContainer>
     )

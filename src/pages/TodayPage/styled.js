@@ -56,7 +56,7 @@ display: flex;
 justify-content: space-between;
 ion-icon{
     color: white;
-    background-color: #E7E7E7;
+    background-color: ${props => props.done ? "#8FC549" : "#E7E7E7"};
     width: 69px;
     height: 69px;
     border-radius: 5px;
