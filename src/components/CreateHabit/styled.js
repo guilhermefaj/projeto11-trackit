@@ -4,7 +4,7 @@ export const CreateHabitContainer = styled.form`
 display: flex;
 background-color: white;
 width: 340px;
-height: 180px;
+min-height: 180px;
 flex-direction: column;
 padding: 18px;
 border-radius: 5px;
