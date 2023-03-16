@@ -9,7 +9,7 @@ import { UserContext } from "../../context/UserContext"
 export default function CreateHabit() {
     const [input, setInput] = useState("")
 
-    const { habit, setHabit } = useContext(HabitContext)
+    const { habit, setHabit, setNewHabit } = useContext(HabitContext)
     const { user } = useContext(UserContext)
 
     function CreateNewHabit(e) {
@@ -23,7 +23,7 @@ export default function CreateHabit() {
         }
         const promise = axios.post(URL, habit, config)
         promise.then(res => {
-            console.log(res.data)
+            setNewHabit({ ...habit, id: res.data.id })
         })
         promise.catch(err => console.log(err.response.data.message))
     }

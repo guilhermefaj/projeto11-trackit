@@ -5,7 +5,7 @@ display:flex;
 width:375px;
 height:70px;
 position: fixed;
-top: 597px;
+bottom: 0px;
 background-color: white;
 z-index: 1;
 align-items:center;

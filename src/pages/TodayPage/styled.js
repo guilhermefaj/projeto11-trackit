@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const TodayContainer = styled.div`
 background-color: #F2F2F2;
 width: 375px;
-height:527px;
 margin-top:70px;
 padding-left: 17px;
 font-family: 'Lexend Deca';
 font-style: normal;
 font-weight: 400;
 line-height: 29px;
+padding-bottom: 120px;
 `
 
 export const TodayTitle = styled.div`
@@ -68,5 +68,8 @@ ion-icon{
 export const HabitTexts = styled.div`
 display: flex;
 flex-direction: column;
+&:last-child{
+    margin-bottom: 70px;
+}
 `
 
