@@ -4,7 +4,7 @@ import { UserContext } from "../../context/UserContext";
 
 export default function NavBar() {
     const { user } = useContext(UserContext)
-    console.log(user)
+
     return (
         <NavContainer data-test="header">
             <h1>TrackIt</h1>

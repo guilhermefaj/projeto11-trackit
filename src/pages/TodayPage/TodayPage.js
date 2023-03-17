@@ -1,10 +1,9 @@
 import { TodayContainer, TodayTitle, HabitsContainer } from "./styled"
 import React, { useContext, useState, useEffect } from "react"
-import { UserContext } from "../../context/UserContext"
-import axios from "axios"
 import dayjs from "dayjs"
 import 'dayjs/locale/pt-br'
 import WeekDays from "./WeekDays"
+import { HabitContext } from "../../context/HabitContext"
 
 dayjs.locale("pt-br");
 const date = dayjs()
@@ -12,32 +11,17 @@ const formattedDate = date.format('dddd, DD/MM')
 const weekday = date.format('dddd')
 
 export default function TodayPage() {
-    const [habits, setHabits] = useState([])
+
     const [done, setDone] = useState([])
     const [dayList, setDayList] = useState([])
     const [percentage, setPercentage] = useState(0)
-    const { user } = useContext(UserContext)
-
-    useEffect(() => {
-        if (user !== undefined) {
-            const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
-            const token = user.token
-            const config = {
-                headers: { Authorization: `Bearer ${token}` }
-            }
-            const promise = axios.get(URL, config)
-            promise.then(res => {
-                setHabits(res.data)
-            })
-            promise.catch(err => console.log(err.response.data.message))
-        }
-    }, [user])
+    const { habitsObj } = useContext(HabitContext)
 
     useEffect(() => {
         const numerator = dayList.length
-        const denominator = habits.length
+        const denominator = habitsObj.length
         setPercentage((numerator / denominator) * 100)
-    }, [habits, done])
+    }, [habitsObj, done])
 
     return (
         <TodayContainer>
@@ -48,7 +32,7 @@ export default function TodayPage() {
             </TodayTitle>
             <HabitsContainer>
                 <WeekDays
-                    habits={habits}
+                    habits={habitsObj}
                     weekday={weekday}
                     done={done}
                     setDone={setDone}

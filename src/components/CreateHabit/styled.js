@@ -11,7 +11,6 @@ border-radius: 5px;
 margin-bottom:29px;
 margin-left: 17px;
 position: relative;
-
 `
 export const InputHabitName = styled.input`
 margin-bottom: 8px;
@@ -75,4 +74,32 @@ line-height: 20px;
 position: absolute;
 right:16px;
 bottom: 15px;
+`
+
+export const CreatedHabits = styled.div`
+display: flex;
+background-color: white;
+width: 340px;
+min-height: 91px;
+padding: 18px;
+border-radius: 5px;
+margin-bottom:29px;
+margin-left: 17px;
+position: relative;
+font-family: 'Lexend Deca';
+color: #666666;
+h2{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 8px;
+    margin-top:-4px
+} 
+ion-icon{
+    color: #666666;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+}
 `
