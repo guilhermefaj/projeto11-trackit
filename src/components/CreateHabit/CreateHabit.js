@@ -8,7 +8,7 @@ import { UserContext } from "../../context/UserContext"
 
 export default function CreateHabit() {
     const [input, setInput] = useState("")
-
+    const [daysList, setDaysList] = useState([])
     const { habit, setHabit, setNewHabit } = useContext(HabitContext)
     const { user } = useContext(UserContext)
 
@@ -24,6 +24,8 @@ export default function CreateHabit() {
         const promise = axios.post(URL, habit, config)
         promise.then(res => {
             setNewHabit({ ...habit, id: res.data.id })
+            setInput("");
+            setDaysList([])
         })
         promise.catch(err => console.log(err.response.data.message))
     }
@@ -41,7 +43,10 @@ export default function CreateHabit() {
                 value={input}
                 onChange={e => setInput(e.target.value)}
             />
-            <WeekButtons />
+            <WeekButtons
+                daysList={daysList}
+                setDaysList={setDaysList}
+            />
             <div>
                 <CancelButton type="button">Cancelar</CancelButton>
                 <SaveButton type="submit">Salvar</SaveButton>

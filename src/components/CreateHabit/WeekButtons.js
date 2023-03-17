@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { HabitContext } from "../../context/HabitContext"
 import { DaysButtons, Button } from "./styled"
 
-export default function WeekButtons() {
-    const [daysList, setDaysList] = useState([])
+export default function WeekButtons({ daysList, setDaysList }) {
+
     const { habit, setHabit } = useContext(HabitContext)
 
     const week = ["D", "S", "T", "Q", "Q", "S", "S"]

@@ -11,19 +11,22 @@ function HabitCard({ habit, setHabitObj, habitsObj }) {
     const { user } = useContext(UserContext)
 
     function deleteHabit(id) {
-        const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`
+        if (window.confirm("Você tem certeza que deseja excluir esse hábito?")) {
+            const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`
 
-        const token = user.token
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
+            const token = user.token
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            }
+
+            const promise = axios.delete(URL, config)
+            promise.then(() => {
+                setHabitObj(habitsObj.filter(habits => habits.id !== id))
+            })
+            promise.catch(err => alert(err.response.data.message))
+        } else {
+            console.log("A exclusão foi cancelada.");
         }
-
-        const promise = axios.delete(URL, config)
-        promise.then(() => {
-            setHabitObj(habitsObj.filter(habits => habits.id !== id))
-        })
-        promise.catch(err => alert(err.response.data.message))
-
     }
 
     return (

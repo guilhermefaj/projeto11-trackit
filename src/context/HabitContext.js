@@ -11,7 +11,8 @@ export function HabitContextProvider({ children }) {
     const [newHabit, setNewHabit] = useState({ name: "", days: [], id: "" })
 
     const { user } = useContext(UserContext)
-
+    console.log("NewHabit: ", newHabit)
+    console.log("habitObj: ", habitsObj)
     useEffect(() => {
         if (user !== undefined) {
             const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
