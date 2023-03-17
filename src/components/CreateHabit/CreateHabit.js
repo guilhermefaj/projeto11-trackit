@@ -6,14 +6,23 @@ import { HabitContext } from "../../context/HabitContext"
 import axios from "axios"
 import { UserContext } from "../../context/UserContext"
 
-export default function CreateHabit() {
+export default function CreateHabit({ hide, setHide }) {
     const [input, setInput] = useState("")
     const [daysList, setDaysList] = useState([])
+    const [load, setLoad] = useState(false)
+
     const { habit, setHabit, setNewHabit } = useContext(HabitContext)
     const { user } = useContext(UserContext)
 
     function CreateNewHabit(e) {
         e.preventDefault()
+        setLoad(true)
+
+        if (daysList.length === 0) {
+            alert("Você precisa selecionar pelo menos um dia")
+            setLoad(false)
+            return
+        }
 
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
 
@@ -26,8 +35,17 @@ export default function CreateHabit() {
             setNewHabit({ ...habit, id: res.data.id })
             setInput("");
             setDaysList([])
+            setLoad(false)
+            setHide(true)
         })
-        promise.catch(err => console.log(err.response.data.message))
+        promise.catch(err => {
+            alert(err.response.data.message)
+            setLoad(false)
+        })
+    }
+
+    function hideForm() {
+        setHide(true)
     }
 
     useEffect(() => {
@@ -36,21 +54,31 @@ export default function CreateHabit() {
     }, [input])
 
     return (
-        <CreateHabitContainer onSubmit={CreateNewHabit}>
-            <InputHabitName
-                placeholder="nome do hábito"
-                type="text"
-                value={input}
-                onChange={e => setInput(e.target.value)}
-            />
-            <WeekButtons
-                daysList={daysList}
-                setDaysList={setDaysList}
-            />
-            <div>
-                <CancelButton type="button">Cancelar</CancelButton>
-                <SaveButton type="submit">Salvar</SaveButton>
-            </div>
-        </CreateHabitContainer>
+        <>
+            {hide ? "" : (<CreateHabitContainer CreateHabitContainer onSubmit={CreateNewHabit} >
+                <InputHabitName
+                    disabled={load}
+                    placeholder="nome do hábito"
+                    type="text"
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                />
+                <WeekButtons
+                    daysList={daysList}
+                    setDaysList={setDaysList}
+                />
+                <div>
+                    <CancelButton
+                        disabled={load}
+                        type="button"
+                        onClick={hideForm}
+                    >Cancelar</CancelButton>
+                    <SaveButton
+                        disabled={load}
+                        type="submit"
+                    >Salvar</SaveButton>
+                </div>
+            </CreateHabitContainer >)}
+        </>
     )
 }

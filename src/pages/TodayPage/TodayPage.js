@@ -10,11 +10,10 @@ const date = dayjs()
 const formattedDate = date.format('dddd, DD/MM')
 const weekday = date.format('dddd')
 
-export default function TodayPage() {
+export default function TodayPage({ percentage, setPercentage }) {
 
     const [done, setDone] = useState([])
     const [dayList, setDayList] = useState([])
-    const [percentage, setPercentage] = useState(0)
     const { habitsObj } = useContext(HabitContext)
 
     useEffect(() => {
@@ -28,7 +27,6 @@ export default function TodayPage() {
             <TodayTitle>
                 <h1>{formattedDate}</h1>
                 {done.length !== 0 ? `Você concluiu ${percentage}%` : <h2>Nenhum hábito concluído ainda</h2>}
-
             </TodayTitle>
             <HabitsContainer>
                 <WeekDays

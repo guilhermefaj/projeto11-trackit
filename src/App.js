@@ -12,6 +12,7 @@ import { HabitContextProvider } from "./context/HabitContext";
 
 export default function App() {
   const [showBars, setShowBars] = useState(false)
+  const [percentage, setPercentage] = useState(0)
 
   return (
     <UserContextProvider>
@@ -22,10 +23,13 @@ export default function App() {
             <Route path="/" element={<SignInPage setShowBars={setShowBars} />} />
             <Route path="/cadastro" element={<SignUpPage />} />
             <Route path="/habitos" element={<HabitsPage />} />
-            <Route path="/hoje" element={<TodayPage />} />
+            <Route path="/hoje" element={<TodayPage
+              setPercentage={setPercentage}
+              percentage={percentage}
+            />} />
             <Route path="/historico" element={<HistoricPage />} />
           </Routes>
-          <Footer />
+          <Footer percentage={percentage} />
         </BrowserRouter>
       </HabitContextProvider>
     </UserContextProvider>

@@ -5,18 +5,14 @@ import HabitCard from "../../components/CreateHabit/HabitCard";
 import { HabitContext } from "../../context/HabitContext";
 
 export default function HabitsPage() {
-    const [habitCount, setHabitCount] = useState(0);
     const [showText, setShowText] = useState(true)
-
+    const [hide, setHide] = useState(true)
+    const [showForm, setShowForm] = useState(false)
     const { habitsObj, setHabitsObj } = useContext(HabitContext)
 
     function handleHabit() {
-        setHabitCount(habitCount + 1)
-    }
-
-    const habits = []
-    for (let i = 0; i < habitCount; i++) {
-        habits.push(<CreateHabit key={i} />)
+        setShowForm(true)
+        setHide(false)
     }
 
     useEffect(() => {
@@ -31,7 +27,7 @@ export default function HabitsPage() {
                 <h1>Meus hábitos</h1>
                 <button onClick={handleHabit}>+</button>
             </MyHabits>
-            {habits.length > 0 ? habits : ""}
+            {showForm ? <CreateHabit hide={hide} setHide={setHide} /> : ""}
             {habitsObj.length > 0 ? (
                 habitsObj.map((habit) => <HabitCard
                     key={habit.id}
