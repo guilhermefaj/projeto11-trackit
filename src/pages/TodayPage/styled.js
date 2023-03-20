@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const TodayContainer = styled.div`
 background-color: #F2F2F2;
 width: 375px;
+height: 100vh;
 margin-top:70px;
 padding-left: 17px;
 font-family: 'Lexend Deca';

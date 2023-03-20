@@ -65,6 +65,7 @@ export default function CreateHabit({ hide, setHide }) {
                     onChange={e => setInput(e.target.value)}
                 />
                 <WeekButtons
+                    disabled={load}
                     daysList={daysList}
                     setDaysList={setDaysList}
                 />

@@ -5,7 +5,7 @@ background-color:#F2F2F2;
 margin-top:70px;
 margin-bottom: 90px;
 width: 375px;
-height:100%;
+height:100vh;
 display: flex;
 flex-direction: column;
 `
