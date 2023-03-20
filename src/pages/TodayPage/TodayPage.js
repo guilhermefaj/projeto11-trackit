@@ -3,40 +3,53 @@ import React, { useContext, useState, useEffect } from "react"
 import dayjs from "dayjs"
 import 'dayjs/locale/pt-br'
 import WeekDays from "./WeekDays"
-import { HabitContext } from "../../context/HabitContext"
+import { UserContext } from "../../context/UserContext"
+import axios from "axios"
 
 dayjs.locale("pt-br");
 const date = dayjs()
 const formattedDate = date.format('dddd, DD/MM')
-const weekday = date.format('dddd')
 
 export default function TodayPage({ percentage, setPercentage }) {
-
-    const [done, setDone] = useState([])
-    const [dayList, setDayList] = useState([])
-    const { habitsObj } = useContext(HabitContext)
+    const [todayHabits, setTodayHabits] = useState([])
+    const [habitId, setHabitId] = useState(undefined)
+    const { user } = useContext(UserContext)
 
     useEffect(() => {
-        const numerator = dayList.length
-        const denominator = habitsObj.length
-        setPercentage((numerator / denominator) * 100)
-    }, [habitsObj, done])
+        if (user.token !== undefined) {
+            const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today"
+            const token = user.token
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            }
+            const promise = axios.get(URL, config)
+            promise.then(res => {
+                console.table("todayHabits", res.data)
+                setTodayHabits(res.data)
+            })
+            promise.catch(err => alert(err.response.data.message))
+        }
+    }, [user, habitId])
 
     return (
         <TodayContainer>
             <TodayTitle>
                 <h1>{formattedDate}</h1>
-                {done.length !== 0 ? `Você concluiu ${percentage}%` : <h2>Nenhum hábito concluído ainda</h2>}
+                {/* {done.length !== 0 ? `Você concluiu ${percentage}%` : <h2>Nenhum hábito concluído ainda</h2>} */}
             </TodayTitle>
             <HabitsContainer>
-                <WeekDays
-                    habits={habitsObj}
-                    weekday={weekday}
-                    done={done}
-                    setDone={setDone}
-                    dayList={dayList}
-                    setDayList={setDayList}
-                />
+                {todayHabits.map(habit => (
+                    <WeekDays
+                        key={habit.id}
+                        todayHabits={todayHabits}
+                        habit={habit}
+                        token={user.token}
+                        habitId={habitId}
+                        setHabitId={setHabitId}
+                        setTodayHabits={setTodayHabits}
+                    />
+                ))}
+
             </HabitsContainer>
         </TodayContainer>
     )

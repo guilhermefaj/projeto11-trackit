@@ -63,6 +63,14 @@ ion-icon{
     position: relative;
     right: 0;
 }
+p{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.976px;
+    line-height: 16px;
+    color: #666666;
+}
 `
 
 export const HabitTexts = styled.div`
@@ -72,4 +80,19 @@ flex-direction: column;
     margin-bottom: 70px;
 }
 `
+
+export const StyledSequence = styled.span`
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StyledRecord = styled.span`
+  color: ${(props) =>
+        props.currentSequence === props.highestSequence &&
+            props.currentSequence > 0 &&
+            props.highestSequence > 0
+            ? "#8FC549"
+            : "#666666"};
+`;
+
 

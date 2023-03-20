@@ -9,12 +9,11 @@ export function HabitContextProvider({ children }) {
     const [habit, setHabit] = useState({ name: "", days: [] })
     const [habitsObj, setHabitsObj] = useState([])
     const [newHabit, setNewHabit] = useState({ name: "", days: [], id: "" })
-    console.log("NewHabit: ", newHabit)
-    console.log("habitObj: ", habitsObj)
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        if (user !== undefined) {
+        if (user.token !== undefined) {
+            console.log(user.token)
             const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
             const token = user.token
             const config = {
