@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { HabitContext } from "../../context/HabitContext"
 import { DaysButtons, Button } from "./styled"
 

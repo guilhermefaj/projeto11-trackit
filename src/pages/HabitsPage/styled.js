@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const HabitsContainer = styled.div`
 background-color:#F2F2F2;
 margin-top:70px;
-margin-bottom: 70px;
+margin-bottom: 90px;
 width: 375px;
-height:527px;
+height:100%;
 display: flex;
 flex-direction: column;
 `

@@ -7,11 +7,13 @@ import axios from "axios"
 import { ThreeDots } from "react-loader-spinner"
 
 
-export default function SignUpPage() {
+export default function SignUpPage({ setShowBars }) {
 
     const [form, setForm] = useState({ name: "", password: "", email: "", image: "" })
     const [load, setLoad] = useState(false)
+
     const navigate = useNavigate()
+    setShowBars(false)
 
     function handleChange(event) {
         setForm({ ...form, [event.target.name]: event.target.value })

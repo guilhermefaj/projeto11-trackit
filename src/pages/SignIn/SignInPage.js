@@ -14,6 +14,7 @@ export default function SignInPage({ setShowBars }) {
     const { setUser } = useContext(UserContext)
 
     const navigate = useNavigate()
+    setShowBars(false)
 
     function signIn(e) {
         e.preventDefault()

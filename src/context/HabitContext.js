@@ -13,7 +13,6 @@ export function HabitContextProvider({ children }) {
 
     useEffect(() => {
         if (user.token !== undefined) {
-            console.log(user.token)
             const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
             const token = user.token
             const config = {

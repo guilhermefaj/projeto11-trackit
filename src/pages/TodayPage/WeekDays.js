@@ -1,5 +1,5 @@
 import { HabitContainer, HabitTexts, StyledRecord, StyledSequence } from "./styled";
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 
 export default function WeekDays({ habit, token, setHabitId, todayHabits, setTodayHabits }) {

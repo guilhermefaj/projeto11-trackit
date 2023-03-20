@@ -24,7 +24,6 @@ export default function TodayPage({ percentage, setPercentage }) {
             }
             const promise = axios.get(URL, config)
             promise.then(res => {
-                console.table(res.data)
                 setTodayHabits(res.data)
                 const totalHabits = res.data.length
                 const doneHabits = res.data.filter(habit => habit.done).length
