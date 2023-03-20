@@ -19,8 +19,12 @@ h1{
     color: #126BA5;
 }
 h2{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
     font-size: 18px;
-    color: #BABABA;
+    line-height: 22px;
+    color: ${props => props.done ? "#8FC549" : "#666666"};
 }
 `
 

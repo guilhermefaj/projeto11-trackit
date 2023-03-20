@@ -24,8 +24,12 @@ export default function TodayPage({ percentage, setPercentage }) {
             }
             const promise = axios.get(URL, config)
             promise.then(res => {
-                console.table("todayHabits", res.data)
+                console.table(res.data)
                 setTodayHabits(res.data)
+                const totalHabits = res.data.length
+                const doneHabits = res.data.filter(habit => habit.done).length
+                const percentage = totalHabits === 0 ? 0 : Math.round((doneHabits / totalHabits) * 100)
+                setPercentage(percentage)
             })
             promise.catch(err => alert(err.response.data.message))
         }
@@ -33,9 +37,9 @@ export default function TodayPage({ percentage, setPercentage }) {
 
     return (
         <TodayContainer>
-            <TodayTitle>
+            <TodayTitle done={percentage > 0}>
                 <h1>{formattedDate}</h1>
-                {/* {done.length !== 0 ? `Você concluiu ${percentage}%` : <h2>Nenhum hábito concluído ainda</h2>} */}
+                {percentage !== 0 ? <h2>{percentage}% dos hábitos concluídos</h2> : <h2>Nenhum hábito concluído ainda</h2>}
             </TodayTitle>
             <HabitsContainer>
                 {todayHabits.map(habit => (
