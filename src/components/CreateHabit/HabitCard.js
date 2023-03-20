@@ -30,12 +30,13 @@ function HabitCard({ habit, setHabitObj, habitsObj }) {
     }
 
     return (
-        <CreatedHabits>
+        <CreatedHabits data-test="habit-container">
             <div>
-                <h2>{habit.name}</h2>
+                <h2 data-test="habit-name">{habit.name}</h2>
                 <DaysButtons>
                     {week.map((day, index) => (
                         <Button
+                            data-test="habit-day"
                             type="button"
                             key={index}
                             isActive={habit.days.includes(index)}
@@ -43,7 +44,7 @@ function HabitCard({ habit, setHabitObj, habitsObj }) {
                     ))}
                 </DaysButtons>
             </div>
-            <ion-icon onClick={() => deleteHabit(habit.id)} name="trash-outline"></ion-icon>
+            <ion-icon data-test="habit-delete-btn" onClick={() => deleteHabit(habit.id)} name="trash-outline"></ion-icon>
         </CreatedHabits>
     );
 }

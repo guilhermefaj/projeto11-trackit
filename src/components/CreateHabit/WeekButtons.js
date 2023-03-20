@@ -25,6 +25,7 @@ export default function WeekButtons({ daysList, setDaysList }) {
         <DaysButtons>
             {week.map((day, index) => (
                 <Button
+                    data-test="habit-day"
                     type="button"
                     key={index}
                     onClick={() => addDay(index)}

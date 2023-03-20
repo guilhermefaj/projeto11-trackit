@@ -25,7 +25,7 @@ export default function HabitsPage() {
         <HabitsContainer>
             <MyHabits>
                 <h1>Meus hábitos</h1>
-                <button onClick={handleHabit}>+</button>
+                <button data-test="habit-create-btn" onClick={handleHabit}>+</button>
             </MyHabits>
             {showForm ? <CreateHabit hide={hide} setHide={setHide} /> : ""}
             {habitsObj.length > 0 ? (

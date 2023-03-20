@@ -32,17 +32,17 @@ export default function WeekDays({ habit, token, setHabitId, todayHabits, setTod
     }
 
     return (
-        <HabitContainer key={habit.id} done={habit.done} currentSequence={habit.currentSequence} highestSequence={habit.highestSequence}>
+        <HabitContainer data-test="today-habit-container" key={habit.id} done={habit.done} currentSequence={habit.currentSequence} highestSequence={habit.highestSequence}>
             <HabitTexts>
-                <h1>{habit.name}</h1>
-                <p>Sequência atual:
+                <h1 data-test="today-habit-name">{habit.name}</h1>
+                <p data-test="today-habit-sequence">Sequência atual:
                     <StyledSequence currentSequence={habit.currentSequence} highestSequence={habit.highestSequence}>
                         <StyledRecord>
                             {habit.currentSequence !== 0 ? (habit.currentSequence === 1 ? ` ${habit.currentSequence} dia` : ` ${habit.currentSequence} dias`) : " 0"}
                         </StyledRecord>
                     </StyledSequence>
                 </p>
-                <p>Seu recorde:
+                <p data-test="today-habit-record">Seu recorde:
                     <StyledSequence currentSequence={habit.currentSequence} highestSequence={habit.highestSequence}>
                         <StyledRecord>
                             {habit.highestSequence !== 0 ? (habit.currentSequence === 1 ? ` ${habit.highestSequence} dia` : ` ${habit.highestSequence} dias`) : " 0"}
@@ -50,7 +50,7 @@ export default function WeekDays({ habit, token, setHabitId, todayHabits, setTod
                     </StyledSequence>
                 </p>
             </HabitTexts>
-            <ion-icon onClick={() => saveId(habit.id)} name="checkmark-outline"></ion-icon>
+            <ion-icon data-test="today-habit-check-btn" onClick={() => saveId(habit.id)} name="checkmark-outline"></ion-icon>
         </HabitContainer>
     );
 }

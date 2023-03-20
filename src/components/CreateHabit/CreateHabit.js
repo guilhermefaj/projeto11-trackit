@@ -55,8 +55,9 @@ export default function CreateHabit({ hide, setHide }) {
 
     return (
         <>
-            {hide ? "" : (<CreateHabitContainer CreateHabitContainer onSubmit={CreateNewHabit} >
+            {hide ? "" : (<CreateHabitContainer data-test="habit-create-container" CreateHabitContainer onSubmit={CreateNewHabit} >
                 <InputHabitName
+                    data-test="habit-name-input"
                     disabled={load}
                     placeholder="nome do hábito"
                     type="text"
@@ -69,11 +70,13 @@ export default function CreateHabit({ hide, setHide }) {
                 />
                 <div>
                     <CancelButton
+                        data-test="habit-create-cancel-btn"
                         disabled={load}
                         type="button"
                         onClick={hideForm}
                     >Cancelar</CancelButton>
                     <SaveButton
+                        data-test="habit-create-save-btn"
                         disabled={load}
                         type="submit"
                     >Salvar</SaveButton>

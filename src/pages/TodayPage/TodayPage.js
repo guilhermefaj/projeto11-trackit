@@ -37,8 +37,8 @@ export default function TodayPage({ percentage, setPercentage }) {
     return (
         <TodayContainer>
             <TodayTitle done={percentage > 0}>
-                <h1>{formattedDate}</h1>
-                {percentage !== 0 ? <h2>{percentage}% dos hábitos concluídos</h2> : <h2>Nenhum hábito concluído ainda</h2>}
+                <h1 data-test="today">{formattedDate}</h1>
+                {percentage !== 0 ? <h2 data-test="today-counter">{percentage}% dos hábitos concluídos</h2> : <h2 data-test="today-counter">Nenhum hábito concluído ainda</h2>}
             </TodayTitle>
             <HabitsContainer>
                 {todayHabits.map(habit => (
